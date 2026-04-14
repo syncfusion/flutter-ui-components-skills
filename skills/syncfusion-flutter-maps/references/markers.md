@@ -94,7 +94,7 @@ Widget build(BuildContext context) {
   return SfMaps(
     layers: [
       MapTileLayer(
-        urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+        urlTemplate: 'url',
         initialFocalLatLng: MapLatLng(37.7749, -122.4194),
         initialZoomLevel: 10,
         initialMarkersCount: _markers.length,
@@ -242,7 +242,7 @@ MapMarker(
   latitude: 40.7128,
   longitude: -74.0060,
   child: CircleAvatar(
-    backgroundImage: NetworkImage('https://example.com/avatar.jpg'),
+    backgroundImage: NetworkImage('url'), 
     radius: 15,
   ),
 )
@@ -456,7 +456,7 @@ void initState() {
 }
 
 MapTileLayer(
-  urlTemplate: _urlTemplate,
+  urlTemplate: 'url',
   controller: _controller,
   // ... marker configuration
 )
@@ -556,7 +556,7 @@ void _fitMarkersInView() {
 }
 
 MapTileLayer(
-  urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+  urlTemplate: 'url',
   zoomPanBehavior: _zoomPanBehavior,
   // ... markers
 )
@@ -568,7 +568,7 @@ Fit markers on initial load:
 
 ```dart
 MapTileLayer(
-  urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+  urlTemplate: 'url',
   initialLatLngBounds: MapLatLngBounds(
     MapLatLng(southwestLat, southwestLng),
     MapLatLng(northeastLat, northeastLng),
@@ -604,7 +604,7 @@ class _StoreLocatorState extends State<StoreLocator> {
     return SfMaps(
       layers: [
         MapTileLayer(
-          urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+          urlTemplate: 'url',
           initialFocalLatLng: MapLatLng(37.7749, -122.4194),
           initialZoomLevel: 11,
           initialMarkersCount: _stores.length,

@@ -17,7 +17,7 @@ Use this skill when you need to:
 - **Display interactive maps** with zoom, pan, and selection capabilities
 - **Visualize geographical data** using shapes, colors, and bubbles
 - **Render GeoJSON data** as maps (countries, states, regions, custom shapes)
-- **Integrate tile-based maps** from OpenStreetMap, Bing Maps, Google Maps, or TomTom
+- **Integrate tile-based maps** from providers.
 - **Add markers to maps** for locations, points of interest, or custom coordinates
 - **Create choropleth maps** with color-coded regions based on data values
 - **Build bubble maps** showing data through size and color variations
@@ -84,6 +84,10 @@ Both layer types support markers (built-in symbols and custom widgets), zoom/pan
 ### Getting Started
 
 📄 **Read:** [references/getting-started.md](references/getting-started.md)
+
+When to read: First-time setup, installation, basic map creation
+
+**Topics covered:**
 - Installation and package setup
 - Basic MapShapeLayer implementation
 - Basic MapTileLayer implementation
@@ -93,18 +97,30 @@ Both layer types support markers (built-in symbols and custom widgets), zoom/pan
 
 ### Layer Overview
 
-📄 **For Shape Layer:** [references/shape-layer.md](references/shape-layer.md)
+#### Shape Layer
+
+📄 **Read:** [references/shape-layer.md](references/shape-layer.md)
+
+When to read: Working with vector maps, GeoJSON data, choropleth maps, data binding
+
+**Topics covered:**
 - MapShapeLayer widget overview and features
 - GeoJSON data source configuration
 - Shape data field mapping
 - Shape appearance (color, stroke)
 - Loading progress indicator
-- When to use Shape Layer
 - Basic shape rendering
+- Color mapping strategies
 
-📄 **For Tile Layer:** [references/tile-layer.md](references/tile-layer.md)
+#### Tile Layer
+
+📄 **Read:** [references/tile-layer.md](references/tile-layer.md)
+
+When to read: Integrating OpenStreetMap, Bing Maps, or other tile providers
+
+**Topics covered:**
 - MapTileLayer widget overview and features
-- URL template format (WMTS)
+- URL template format (WMTS specification)
 - OpenStreetMap integration
 - Bing Maps setup and API keys
 - Other providers (TomTom, MapBox, Google Maps)
@@ -114,6 +130,10 @@ Both layer types support markers (built-in symbols and custom widgets), zoom/pan
 ### Markers
 
 📄 **Read:** [references/markers.md](references/markers.md)
+
+When to read: Adding location markers, pins, or custom markers to maps
+
+**Topics covered:**
 - Adding markers to both layer types
 - Built-in marker symbols (circle, diamond, triangle, etc.)
 - Custom marker widgets
@@ -126,22 +146,42 @@ Both layer types support markers (built-in symbols and custom widgets), zoom/pan
 
 ### Data Visualization Features (Shape Layer)
 
+#### Data Labels
+
 📄 **Read:** [references/data-labels.md](references/data-labels.md)
+
+When to read: Displaying text labels on map shapes
+
+**Topics covered:**
 - Showing data labels on shapes
 - Data label mapper configuration
 - Label text customization
 - Label trimming and overflow handling
 - Label styling and positioning
+- Smart label behavior
+
+#### Legends
 
 📄 **Read:** [references/legend.md](references/legend.md)
+
+When to read: Adding legends for shapes or bubbles
+
+**Topics covered:**
 - Legend configuration and positioning
 - Legend for shape colors
 - Legend for bubbles
 - Legend customization (icons, text, layout)
 - Legend toggling feature
 - Legend interactions
+- Text style configuration
+
+#### Tooltips
 
 📄 **Read:** [references/tooltip.md](references/tooltip.md)
+
+When to read: Adding interactive tooltips to map elements
+
+**Topics covered:**
 - Shape tooltips with builders
 - Bubble tooltips
 - Marker tooltips
@@ -149,7 +189,13 @@ Both layer types support markers (built-in symbols and custom widgets), zoom/pan
 - Tooltip styling and positioning
 - Tooltip settings (color, stroke, padding)
 
+#### Bubbles
+
 📄 **Read:** [references/bubble.md](references/bubble.md)
+
+When to read: Visualizing data with size/color-coded bubbles on shapes
+
+**Topics covered:**
 - Bubble visualization overview
 - Bubble size mapping based on data
 - Bubble color mapping
@@ -160,6 +206,10 @@ Both layer types support markers (built-in symbols and custom widgets), zoom/pan
 ### Color and Data Mapping
 
 📄 **Read:** [references/color-mapping.md](references/color-mapping.md)
+
+When to read: Mapping data values to colors for shapes or bubbles
+
+**Topics covered:**
 - Equal color mapping (discrete values)
 - Range color mapping (continuous ranges)
 - Shape color value mapper
@@ -169,17 +219,30 @@ Both layer types support markers (built-in symbols and custom widgets), zoom/pan
 - Returning colors directly vs using mappers
 - Color mapping patterns
 
-### Selection and Interaction
+### Selection and Interaction Features
+
+#### Selection
 
 📄 **Read:** [references/selection.md](references/selection.md)
+
+When to read: Enabling shape selection and handling user interactions
+
+**Topics covered:**
 - Shape selection feature
 - Selection callbacks
 - Selection styling and decoration
 - Single vs multi-selection
 - Programmatic selection
 - Toggling selection
+- Selection events and handlers
+
+#### Zoom and Pan
 
 📄 **Read:** [references/zoom-pan.md](references/zoom-pan.md)
+
+When to read: Enabling zoom, pan, and navigation features
+
+**Topics covered:**
 - MapZoomPanBehavior configuration
 - Pinch zoom (mobile)
 - Mouse wheel zoom (desktop)
@@ -192,7 +255,13 @@ Both layer types support markers (built-in symbols and custom widgets), zoom/pan
 
 ### Advanced Features
 
+#### Vector Layers
+
 📄 **Read:** [references/vector-layers.md](references/vector-layers.md)
+
+When to read: Adding additional vector overlays to maps
+
+**Topics covered:**
 - MapArcLayer (arcs between two coordinates)
 - MapCircleLayer (circles at specific coordinates)
 - MapLineLayer (lines connecting coordinates)
@@ -201,16 +270,29 @@ Both layer types support markers (built-in symbols and custom widgets), zoom/pan
 - Vector layer styling and customization
 - Use cases for each vector type
 
+#### Sublayers
+
 📄 **Read:** [references/shape-sublayer.md](references/shape-sublayer.md)
+
+When to read: Adding multiple layers and hierarchical data visualization
+
+**Topics covered:**
 - Adding sublayers to MapShapeLayer
 - Sublayer configuration and nesting
 - Sublayer markers and bubbles
 - Hierarchical data visualization
 - Use cases for sublayers
+- Layer ordering and z-index
 
 ### Customization and Theming
 
+#### Customization
+
 📄 **Read:** [references/customization.md](references/customization.md)
+
+When to read: Customizing map appearance and styling
+
+**Topics covered:**
 - SfMapsTheme integration
 - Visual appearance customization
 - Shape styling (colors, borders)
@@ -219,7 +301,13 @@ Both layer types support markers (built-in symbols and custom widgets), zoom/pan
 - Responsive design patterns
 - Custom map styling
 
+#### Accessibility
+
 📄 **Read:** [references/accessibility.md](references/accessibility.md)
+
+When to read: Implementing accessible map features for all users
+
+**Topics covered:**
 - Screen reader support
 - Semantic labels for shapes
 - Keyboard navigation
@@ -288,7 +376,7 @@ class MyTileMap extends StatelessWidget {
       body: SfMaps(
         layers: [
           MapTileLayer(
-            urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+            urlTemplate: 'url',
             initialFocalLatLng: MapLatLng(27.1751, 78.0421),
             initialZoomLevel: 5,
           ),
@@ -469,7 +557,7 @@ void initState() {
 }
 
 MapTileLayer(
-  urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+  urlTemplate: 'url',
   initialFocalLatLng: MapLatLng(37.7749, -122.4194),
   initialZoomLevel: 10,
   controller: _controller,

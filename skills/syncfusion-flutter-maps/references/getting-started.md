@@ -25,18 +25,18 @@ import 'package:syncfusion_flutter_maps/maps.dart';
 
 ## Basic MapShapeLayer Implementation
 
-MapShapeLayer renders GeoJSON data as geographical shapes.
+MapShapeLayer renders shape data as geographical shapes.
 
-### Prepare GeoJSON File
+### Prepare Shape Data File
 
-1. Download or create a GeoJSON file (e.g., `world_map.json`, `usa_states.json`)
+1. Download or create a shape data file (e.g., `map_data.json`, `region_data.json`)
 2. Place it in your `assets` folder
 3. Declare it in `pubspec.yaml`:
 
 ```yaml
 flutter:
   assets:
-    - assets/world_map.json
+    - assets/map_data.json
 ```
 
 ### Simple Shape Layer
@@ -57,7 +57,7 @@ class _BasicShapeMapState extends State<BasicShapeMap> {
   void initState() {
     super.initState();
     _dataSource = MapShapeSource.asset(
-      'assets/world_map.json',
+      'assets/map_data.json',
       shapeDataField: 'name',
     );
   }
@@ -65,7 +65,7 @@ class _BasicShapeMapState extends State<BasicShapeMap> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('World Map')),
+      appBar: AppBar(title: Text('Shape Map')),
       body: Padding(
         padding: EdgeInsets.all(15),
         child: SfMaps(
@@ -93,16 +93,16 @@ MapShapeLayer(
 )
 ```
 
-## Loading GeoJSON from Different Sources
+## Loading Shape Data from Different Sources
 
-### From Asset Bundle
+### From Asset Bundle (Recommended for Offline Maps)
 
-Most common approach for offline maps:
+Embed shape data directly in your app for offline access:
 
 ```dart
 _dataSource = MapShapeSource.asset(
-  'assets/australia.json',
-  shapeDataField: 'STATE_NAME',
+  'assets/region_data.json',
+  shapeDataField: 'name',
 );
 ```
 
@@ -110,28 +110,27 @@ _dataSource = MapShapeSource.asset(
 - Add file to `assets/` folder
 - Declare in `pubspec.yaml`
 
-### From Network
+**Best for:** Offline maps, consistent availability, no internet dependency
 
-Load GeoJSON from a URL:
 
-```dart
-_dataSource = MapShapeSource.network(
-  'https://example.com/api/map-data.json',
-  shapeDataField: 'name',
-);
-```
+### From Network (Out of Scope for This Skill)
 
-**Note:** Requires internet connectivity. Handle loading states appropriately.
+Syncfusion Flutter Maps supports loading shape data from network sources in application-controlled scenarios.
+
+However, this skill focuses only on **asset-based** and **in-memory** shape data to ensure safe and deterministic agent behavior.  
+Network-based loading is not demonstrated as an executable workflow within this skill.
+
+For application-only guidance, refer to `references/shape-layer.md`.
 
 ### From Memory (Uint8List)
 
-Load GeoJSON as bytes:
+Load shape data as bytes:
 
 ```dart
 @override
 Widget build(BuildContext context) {
   return FutureBuilder(
-    future: _fetchJsonData(),
+    future: _fetchShapeData(),
     builder: (BuildContext context, snapshot) {
       if (snapshot.hasData) {
         Uint8List bytesData = snapshot.data as Uint8List;
@@ -140,7 +139,7 @@ Widget build(BuildContext context) {
             MapShapeLayer(
               source: MapShapeSource.memory(
                 bytesData,
-                shapeDataField: 'STATE_NAME',
+                shapeDataField: 'name',
               ),
             ),
           ],
@@ -152,69 +151,29 @@ Widget build(BuildContext context) {
   );
 }
 
-Future<Uint8List> _fetchJsonData() async {
-  return (await rootBundle.load('assets/map.json'))
+Future<Uint8List> _fetchShapeData() async {
+  return (await rootBundle.load('assets/map_data.json'))
       .buffer
       .asUint8List();
 }
 ```
 
-## Basic MapTileLayer Implementation
+## Basic MapTileLayer Overview (Conceptual)
 
-MapTileLayer renders tiles from web map services.
+MapTileLayer represents the tile-based map rendering capability provided by Syncfusion Flutter Maps.
 
-### OpenStreetMap (Free)
+Tile layers are typically used in application environments that allow controlled network access. This skill does not execute or demonstrate
+tile-based workflows to avoid guiding agents to load external resources.
 
-```dart
-import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_maps/maps.dart';
-
-class BasicTileMap extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('OpenStreetMap')),
-      body: SfMaps(
-        layers: [
-          MapTileLayer(
-            urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-          ),
-        ],
-      ),
-    );
-  }
-}
-```
-
-### Tile Layer with Custom Location
-
-```dart
-MapTileLayer(
-  urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-  initialFocalLatLng: MapLatLng(37.7749, -122.4194), // San Francisco
-  initialZoomLevel: 10,
-)
-```
-
-### URL Template Format
-
-The `urlTemplate` uses WMTS (Web Map Tile Service) format:
-- `{z}` - Zoom level
-- `{x}` - Tile X coordinate
-- `{y}` - Tile Y coordinate
-
-**Common formats:**
-- `https://provider.com/{z}/{x}/{y}.png`
-- `https://provider.com/z={z}/x={x}/y={y}.png`
-- `https://provider.com/{z}/{x}/{y}.png?key=API_KEY`
+For complete, runnable examples, see `references/tile-layer.md`.
 
 ## Understanding shapeDataField
 
-The `shapeDataField` is a crucial property that maps your data to GeoJSON shapes.
+The `shapeDataField` is a crucial property that maps your data to shape data properties.
 
 ### How It Works
 
-1. **GeoJSON Structure:**
+1. **Shape Data Structure:**
 ```json
 {
   "type": "FeatureCollection",
@@ -222,8 +181,8 @@ The `shapeDataField` is a crucial property that maps your data to GeoJSON shapes
     {
       "type": "Feature",
       "properties": {
-        "name": "California",
-        "STATE_CODE": "CA"
+        "name": "Region1",
+        "region_code": "R01"
       },
       "geometry": { ... }
     }
@@ -234,24 +193,24 @@ The `shapeDataField` is a crucial property that maps your data to GeoJSON shapes
 2. **Set shapeDataField:**
 ```dart
 MapShapeSource.asset(
-  'assets/usa_states.json',
-  shapeDataField: 'name', // Matches 'name' property in GeoJSON
+  'assets/region_data.json',
+  shapeDataField: 'name', // Matches 'name' property in shape data
 );
 ```
 
 3. **Match with Your Data:**
 ```dart
-List<StateData> data = [
-  StateData('California', 100),
-  StateData('Texas', 85),
+List<RegionData> data = [
+  RegionData('Region1', 100),
+  RegionData('Region2', 85),
 ];
 
 MapShapeSource.asset(
-  'assets/usa_states.json',
+  'assets/region_data.json',
   shapeDataField: 'name',
   dataCount: data.length,
-  primaryValueMapper: (index) => data[index].stateName,
-  // 'California' from data matches 'California' in GeoJSON
+  primaryValueMapper: (index) => data[index].regionName,
+  // 'Region1' from data matches 'Region1' in shape data
 );
 ```
 
@@ -286,16 +245,16 @@ class _MapExampleState extends State<MapExample> {
     super.initState();
     
     _data = [
-      CountryData('India', 280, Colors.orange),
-      CountryData('United States of America', 190, Colors.blue),
-      CountryData('Brazil', 120, Colors.green),
+      RegionData('Region1', 280, Colors.orange),
+      RegionData('Region2', 190, Colors.blue),
+      RegionData('Region3', 120, Colors.green),
     ];
     
     _dataSource = MapShapeSource.asset(
-      'assets/world_map.json',
+      'assets/map_data.json',
       shapeDataField: 'name',
       dataCount: _data.length,
-      primaryValueMapper: (int index) => _data[index].country,
+      primaryValueMapper: (int index) => _data[index].region,
       shapeColorValueMapper: (int index) => _data[index].color,
     );
   }
@@ -325,10 +284,10 @@ class _MapExampleState extends State<MapExample> {
   }
 }
 
-class CountryData {
-  CountryData(this.country, this.value, this.color);
+class RegionData {
+  RegionData(this.region, this.value, this.color);
   
-  final String country;
+  final String region;
   final double value;
   final Color color;
 }
@@ -348,7 +307,7 @@ Now that you have basic maps working:
 
 ### Issue: Map Not Displaying
 
-**Cause:** GeoJSON file not loaded or path incorrect
+**Cause:** Shape data file not loaded or path incorrect
 
 **Solution:**
 1. Verify file is in `assets/` folder
@@ -356,21 +315,22 @@ Now that you have basic maps working:
 3. Run `flutter pub get` after updating pubspec
 4. Use correct file name (case-sensitive)
 
-### Issue: Tiles Not Loading (MapTileLayer)
+### Issue: Tiles Not Loading (Application Usage)
 
-**Cause:** No internet connection or incorrect URL
+**Cause:** No internet connection, incorrect URL template, or tile provider issues
 
 **Solution:**
 1. Check internet connectivity
-2. Verify URL template format
+2. Verify URL template format matches WMTS specification
 3. Test URL in browser (replace {z}/{x}/{y} with actual values)
-4. Check for API key requirements
+4. Verify tile provider is operational
+5. Check for API key or subscription requirements from provider
 
 ### Issue: Shapes Not Matching Data
 
-**Cause:** `shapeDataField` doesn't match GeoJSON property
+**Cause:** `shapeDataField` doesn't match shape data property
 
 **Solution:**
-1. Open GeoJSON file and check property names
+1. Open shape data file and check property names
 2. Set `shapeDataField` to exact property name
 3. Ensure `primaryValueMapper` returns matching values

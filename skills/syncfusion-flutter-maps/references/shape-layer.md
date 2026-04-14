@@ -1,11 +1,11 @@
 # MapShapeLayer Overview
 
-The MapShapeLayer renders GeoJSON data as geographical shapes with extensive customization and data visualization capabilities. It's ideal for choropleth maps, statistical visualizations, and offline mapping.
+The MapShapeLayer renders geographical shape data as interactive shapes with extensive customization and data visualization capabilities. It's ideal for choropleth maps, statistical visualizations, and offline mapping.
 
 ## Table of Contents
 - [Overview](#overview)
 - [Basic Configuration](#basic-configuration)
-- [Loading GeoJSON Data](#loading-geojson-data)
+- [Loading Shape Data](#loading-shape-data)
 - [Shape Appearance](#shape-appearance)
 - [Loading Progress Indicator](#loading-progress-indicator)
 - [Shape Data Field Mapping](#shape-data-field-mapping)
@@ -15,7 +15,7 @@ The MapShapeLayer renders GeoJSON data as geographical shapes with extensive cus
 ## Overview
 
 MapShapeLayer provides:
-- **GeoJSON rendering** for any geographical data
+- **Geographical shape rendering** for any map data
 - **Data binding** to display statistical information
 - **Color mapping** for choropleth visualizations
 - **Bubbles** for proportional symbol maps
@@ -64,13 +64,13 @@ MapShapeLayer(
 )
 ```
 
-## Loading GeoJSON Data
+## Loading Shape Data
 
 ### MapShapeSource Constructors
 
-#### 1. Asset (Most Common)
+#### 1. Asset (Recommended - Offline Support)
 
-Load GeoJSON from asset bundle:
+Load shape data from asset bundle (recommended for consistent availability and offline access):
 
 ```dart
 _dataSource = MapShapeSource.asset(
@@ -89,11 +89,11 @@ flutter:
 
 #### 2. Network
 
-Load GeoJSON from URL:
+Load GeoJSON from user provided URL:
 
 ```dart
 _dataSource = MapShapeSource.network(
-  'https://api.example.com/geojson/world',
+  'url',
   shapeDataField: 'name',
 );
 ```
@@ -120,10 +120,10 @@ FutureBuilder(
 
 #### 3. Memory (Uint8List)
 
-Load GeoJSON as bytes:
+Load shape data as bytes:
 
 ```dart
-Future<Uint8List> _loadGeoJsonBytes() async {
+Future<Uint8List> _loadShapeDataBytes() async {
   return (await rootBundle.load('assets/map.json'))
       .buffer
       .asUint8List();
@@ -132,7 +132,7 @@ Future<Uint8List> _loadGeoJsonBytes() async {
 @override
 Widget build(BuildContext context) {
   return FutureBuilder<Uint8List>(
-    future: _loadGeoJsonBytes(),
+    future: _loadShapeDataBytes(),
     builder: (context, snapshot) {
       if (snapshot.hasData) {
         return SfMaps(
@@ -153,9 +153,9 @@ Widget build(BuildContext context) {
 ```
 
 **Use cases:**
-- Loading compressed GeoJSON
+- Loading compressed shape data
 - Fetching from secure storage
-- Processing GeoJSON before display
+- Processing shape data before display
 
 ## Shape Appearance
 
@@ -235,7 +235,7 @@ MapShapeLayer(
 
 ## Loading Progress Indicator
 
-Show a loading widget while GeoJSON loads:
+Show a loading widget while shape data loads:
 
 ```dart
 MapShapeLayer(
@@ -269,11 +269,11 @@ loadingBuilder: (context) {
 
 ## Shape Data Field Mapping
 
-The `shapeDataField` connects GeoJSON properties to your data.
+The `shapeDataField` connects shape data properties to your data.
 
 ### Understanding the Connection
 
-**GeoJSON Structure:**
+**Shape Data Structure Example:**
 ```json
 {
   "type": "FeatureCollection",
@@ -281,9 +281,9 @@ The `shapeDataField` connects GeoJSON properties to your data.
     {
       "type": "Feature",
       "properties": {
-        "name": "California",
-        "STATE_CODE": "CA",
-        "population": 39538223
+        "name": "Region1",
+        "region_code": "R01",
+        "population": 1000000
       },
       "geometry": { ... }
     }
@@ -295,10 +295,10 @@ The `shapeDataField` connects GeoJSON properties to your data.
 ```dart
 MapShapeSource.asset(
   'assets/usa.json',
-  shapeDataField: 'name',  // Must match GeoJSON property
+  shapeDataField: 'name',  // Must match shape data property
   dataCount: stateData.length,
   primaryValueMapper: (index) => stateData[index].stateName,
-  // Links your data's 'stateName' with GeoJSON's 'name'
+  // Links your data's 'stateName' with shape data's 'name'
 );
 ```
 
@@ -327,7 +327,7 @@ void initState() {
   
   _dataSource = MapShapeSource.asset(
     'assets/usa_states.json',
-    shapeDataField: 'name',                    // GeoJSON property
+    shapeDataField: 'name',                    // Shape data property
     dataCount: _data.length,
     primaryValueMapper: (index) => _data[index].name,  // Your data
     dataLabelMapper: (index) => _data[index].name,     // Label text
@@ -338,7 +338,7 @@ void initState() {
 
 ### Multiple Property Options
 
-If your GeoJSON has multiple identifier fields:
+If your shape data has multiple identifier fields:
 
 ```json
 {
@@ -506,12 +506,12 @@ class _MapWidgetState extends State<MapWidget> {
 ### Issue: Shapes Not Rendering
 
 **Check:**
-1. GeoJSON file path is correct
+1. Shape data file path is correct
 2. File is declared in `pubspec.yaml`
-3. `shapeDataField` matches a property in GeoJSON
-4. GeoJSON is valid (test with online validators)
+3. `shapeDataField` matches a property in the shape data
+4. Shape data is valid (test with data validators)
 
-### Issue: Data Not Matching Shapes
+### Issue: Network Loading Fails
 
 **Check:**
 1. Values from `primaryValueMapper` exactly match GeoJSON property values

@@ -205,7 +205,7 @@ Column(
       child: SfMaps(
         layers: [
           MapTileLayer(
-            urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+            urlTemplate: 'url',
             zoomPanBehavior: _zoomPanBehavior,
           ),
         ],
@@ -241,7 +241,7 @@ Stack(
     SfMaps(
       layers: [
         MapTileLayer(
-          urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+          urlTemplate: 'url',
           zoomPanBehavior: _zoomPanBehavior,
         ),
       ],

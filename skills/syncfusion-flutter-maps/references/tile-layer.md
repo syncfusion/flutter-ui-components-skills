@@ -1,6 +1,6 @@
 # MapTileLayer Overview
 
-The MapTileLayer renders map tiles from web map tile services like OpenStreetMap, Bing Maps, Google Maps, and TomTom. It's ideal for applications requiring real-world street maps and detailed geographical features.
+MapTileLayer represents the tile-based map rendering capability provided by Syncfusion Flutter Maps. It's ideal for applications requiring real-world street maps and detailed geographical features.
 
 ## Table of Contents
 - [Overview](#overview)
@@ -15,7 +15,6 @@ The MapTileLayer renders map tiles from web map tile services like OpenStreetMap
 
 MapTileLayer provides:
 - **Street maps** with roads, buildings, and landmarks
-- **Multiple providers** (OSM, Bing, Google, TomTom, etc.)
 - **Online tile loading** from web services
 - **Markers** for locations and points of interest
 - **Zoom and pan** for interactive navigation
@@ -28,13 +27,13 @@ MapTileLayer provides:
 
 ## URL Template Format
 
-The `urlTemplate` property uses WMTS (Web Map Tile Service) format.
+The `urlTemplate` property defines the tile addressing pattern used by map tile services.
 
 ### Standard Format
 
 ```dart
 MapTileLayer(
-  urlTemplate: 'https://tile.provider.com/{z}/{x}/{y}.png',
+  urlTemplate: 'url',
 )
 ```
 
@@ -78,7 +77,7 @@ class OSMMap extends StatelessWidget {
       body: SfMaps(
         layers: [
           MapTileLayer(
-            urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+            urlTemplate: 'url',
           ),
         ],
       ),
@@ -91,7 +90,7 @@ class OSMMap extends StatelessWidget {
 
 ```dart
 MapTileLayer(
-  urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+  urlTemplate: 'url',
   initialFocalLatLng: MapLatLng(40.7128, -74.0060), // New York
   initialZoomLevel: 12,
 )
@@ -107,7 +106,7 @@ Stack(
     SfMaps(
       layers: [
         MapTileLayer(
-          urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+          urlTemplate: 'url',
         ),
       ],
     ),
@@ -158,7 +157,7 @@ class BingMapWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: getBingUrlTemplate(
-        'https://dev.virtualearth.net/REST/V1/Imagery/Metadata/RoadOnDemand?output=json&uriScheme=https&include=ImageryProviders&key=YOUR_BING_API_KEY'
+        'url'
       ),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
@@ -209,7 +208,7 @@ class _BingMapState extends State<BingMap> {
   void initState() {
     super.initState();
     _bingUrlFuture = getBingUrlTemplate(
-      'https://dev.virtualearth.net/REST/V1/Imagery/Metadata/RoadOnDemand?output=json&uriScheme=https&include=ImageryProviders&key=YOUR_KEY'
+      'url'
     );
   }
   
@@ -251,7 +250,7 @@ Requires API key from [TomTom Developer Portal](https://developer.tomtom.com/).
 
 ```dart
 MapTileLayer(
-  urlTemplate: 'https://api.tomtom.com/map/1/tile/basic/main/{z}/{x}/{y}.png?key=YOUR_TOMTOM_API_KEY',
+  urlTemplate: 'url',
   initialFocalLatLng: MapLatLng(51.5074, -0.1278), // London
   initialZoomLevel: 10,
 )
@@ -263,7 +262,7 @@ Requires API key from [Google Cloud Console](https://console.cloud.google.com/).
 
 ```dart
 MapTileLayer(
-  urlTemplate: 'https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}&key=YOUR_GOOGLE_API_KEY',
+  urlTemplate: 'url',
   initialFocalLatLng: MapLatLng(37.7749, -122.4194),
   initialZoomLevel: 12,
 )
@@ -283,7 +282,7 @@ Requires API token from [MapBox](https://www.mapbox.com/).
 
 ```dart
 MapTileLayer(
-  urlTemplate: 'https://api.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=YOUR_MAPBOX_TOKEN',
+  urlTemplate: '<USER_PROVIDED_TILE_URL>',
   initialFocalLatLng: MapLatLng(40.7128, -74.0060),
   initialZoomLevel: 11,
 )
@@ -302,7 +301,7 @@ Free tier available at [Stadia Maps](https://stadiamaps.com/).
 
 ```dart
 MapTileLayer(
-  urlTemplate: 'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}.png?api_key=YOUR_STADIA_KEY',
+  urlTemplate: '<USER_PROVIDED_TILE_URL>',
   initialFocalLatLng: MapLatLng(48.8566, 2.3522), // Paris
   initialZoomLevel: 12,
 )
@@ -316,7 +315,7 @@ The `initialFocalLatLng` sets the map's center on load:
 
 ```dart
 MapTileLayer(
-  urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+  urlTemplate: '<USER_PROVIDED_TILE_URL>',
   initialFocalLatLng: MapLatLng(
     34.0522,  // Latitude (North/South)
     -118.2437 // Longitude (East/West)
@@ -350,7 +349,7 @@ The `initialZoomLevel` controls the initial zoom:
 
 ```dart
 MapTileLayer(
-  urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+  urlTemplate: '<USER_PROVIDED_TILE_URL>',
   initialZoomLevel: 10,
 )
 ```
@@ -371,7 +370,7 @@ Show a specific region by defining bounds:
 
 ```dart
 MapTileLayer(
-  urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+  urlTemplate: '<USER_PROVIDED_TILE_URL>',
   initialLatLngBounds: MapLatLngBounds(
     MapLatLng(40.4774, -74.2591),  // Southwest corner
     MapLatLng(40.9176, -73.7004),  // Northeast corner
@@ -394,7 +393,7 @@ class TileMapWidget extends StatelessWidget {
         SfMaps(
           layers: [
             MapTileLayer(
-              urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+              urlTemplate: '<USER_PROVIDED_TILE_URL>',
             ),
           ],
         ),
@@ -425,7 +424,7 @@ class SafeTileMap extends StatelessWidget {
     return SfMaps(
       layers: [
         MapTileLayer(
-          urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+          urlTemplate: '<USER_PROVIDED_TILE_URL>',
           // Add error boundary
         ),
       ],
@@ -440,14 +439,14 @@ class SafeTileMap extends StatelessWidget {
 
 ```dart
 // ❌ BAD
-urlTemplate: 'https://api.provider.com/{z}/{x}/{y}.png?key=12345ABCDE'
+urlTemplate: '<USER_PROVIDED_TILE_URL>'
 
 // ✅ GOOD - Use environment variables
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 String get apiKey => dotenv.env['MAP_API_KEY'] ?? '';
 
-urlTemplate: 'https://api.provider.com/{z}/{x}/{y}.png?key=$apiKey'
+urlTemplate: '<USER_PROVIDED_TILE_URL>'
 ```
 
 ### 5. Respect Usage Limits
@@ -492,9 +491,9 @@ class _MultiProviderMapState extends State<MultiProviderMap> {
   String get _urlTemplate {
     switch (_provider) {
       case MapProvider.openStreetMap:
-        return 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
+        return '<USER_PROVIDED_TILE_URL>';
       case MapProvider.googleMaps:
-        return 'https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}';
+        return '<USER_PROVIDED_TILE_URL>';
       case MapProvider.bingMaps:
         // Handle Bing URL separately with FutureBuilder
         return '';
