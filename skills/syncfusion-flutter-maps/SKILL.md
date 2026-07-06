@@ -3,7 +3,7 @@ name: syncfusion-flutter-maps
 description: Implements Syncfusion Flutter Maps (SfMaps) for interactive geographical data visualization in Flutter apps. Use when working with shape layers, tile layers, choropleth maps, or map markers and overlays. This skill covers GeoJSON rendering, OpenStreetMap/Bing Maps integration, bubbles, legends, tooltips, zoom and pan, and spatial data visualization.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Syncfusion Flutter Maps

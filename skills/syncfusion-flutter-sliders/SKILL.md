@@ -3,7 +3,7 @@ name: syncfusion-flutter-sliders
 description: Implements Syncfusion Flutter Slider controls (SfSlider, SfRangeSlider, SfRangeSelector) for numeric value selection and range inputs. Use when working with single-value sliders, range selection, or chart-range controllers in Flutter apps. This skill covers thumb and tooltip customization, ticks, dividers, RTL support, drag modes, and chart integrations.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Syncfusion Flutter Slider Controls

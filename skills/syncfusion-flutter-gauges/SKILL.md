@@ -3,7 +3,7 @@ name: syncfusion-flutter-gauges
 description: Implements Syncfusion Flutter Gauge widgets (SfLinearGauge, SfRadialGauge) for data visualization and measurement displays in Flutter apps. Use when building speedometers, progress indicators, KPI dashboards, or radial/linear measurement UIs. This skill covers gauge axes, pointers, ranges, annotations, and customization for both linear and radial gauge types.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Syncfusion Flutter Gauges

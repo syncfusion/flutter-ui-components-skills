@@ -3,7 +3,7 @@ name: syncfusion-flutter-funnel-charts
 description: Implements Syncfusion Flutter Funnel Chart (SfFunnelChart) for proportional and stage-based data visualization in Flutter apps. Use when working with conversion funnels, sales pipelines, or process-stage visualizations. This skill covers series configuration, segment exploding, gap ratio, data labels, legends, tooltips, and customization.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Syncfusion Flutter Funnel Chart

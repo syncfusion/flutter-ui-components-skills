@@ -3,7 +3,7 @@ name: syncfusion-flutter-spark-charts
 description: Implements Syncfusion Flutter Spark Charts (SfSparkLineChart, SfSparkAreaChart, SfSparkBarChart, SfSparkWinLossChart) for compact, lightweight data visualization. Use when working with micro charts, sparklines, KPI indicators, or inline trend charts in Flutter dashboards. This skill covers chart configuration, data binding, markers, tooltips, and trackball for all four spark chart types.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Syncfusion Flutter Spark Charts

@@ -3,7 +3,7 @@ name: syncfusion-flutter-chat
 description: Implements Syncfusion Flutter Chat (SfChat) and AI AssistView (SfAIAssistView) widgets for conversational interfaces in Flutter apps. Use when building chat UIs, AI chatbot interfaces, or messaging screens with support for message bubbles, composers, and action buttons. This skill covers conversation area customization, placeholder screens, theming, RTL support, and AI assistant integration.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Syncfusion Flutter Chat & AI AssistView

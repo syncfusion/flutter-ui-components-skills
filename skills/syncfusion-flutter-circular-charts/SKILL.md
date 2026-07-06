@@ -3,7 +3,7 @@ name: syncfusion-flutter-circular-charts
 description: Implements Syncfusion Flutter Circular Charts (SfCircularChart) for pie, doughnut, and radial bar data visualizations in Flutter. Use when working with PieSeries, DoughnutSeries, or RadialBarSeries using the syncfusion_flutter_charts package. This skill covers chart setup, data labels, legends, tooltips, selection, annotations, gradients, animation, accessibility, and chart export.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Implementing Syncfusion Flutter Circular Charts

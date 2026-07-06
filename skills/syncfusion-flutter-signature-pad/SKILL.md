@@ -3,7 +3,7 @@ name: syncfusion-flutter-signature-pad
 description: Implements Syncfusion Flutter SignaturePad (SfSignaturePad) for capturing handwritten signatures and drawings in Flutter apps. Use when implementing digital signatures, document signing, e-signature fields, or touch/stylus drawing surfaces. This skill covers stroke customization, background color, saving signatures as images, and clearing the pad.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Syncfusion Flutter Signature Pad

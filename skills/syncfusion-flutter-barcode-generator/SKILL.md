@@ -3,7 +3,7 @@ name: syncfusion-flutter-barcode-generator
 description: Implements Syncfusion Flutter Barcode Generator (SfBarcodeGenerator) for generating 1D and 2D barcodes in Flutter apps. Use when working with QR codes, Data Matrix, Code128, EAN, UPC, or other machine-readable barcode formats. This skill covers barcode types, customization, sizing, text display, and integration into product labels, ticketing, or inventory systems.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Syncfusion Flutter Barcode Generator

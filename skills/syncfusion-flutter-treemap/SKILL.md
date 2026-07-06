@@ -3,7 +3,7 @@ name: syncfusion-flutter-treemap
 description: Implements Syncfusion Flutter TreeMap (SfTreemap) for visualizing hierarchical and proportional data in Flutter apps. Use when working with treemap layouts, nested rectangles, drill-down navigation, or hierarchical data visualization. This skill covers layouts, labels, tooltips, legends, selection, color mapping, and drilldown navigation.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Implementing Flutter TreeMaps

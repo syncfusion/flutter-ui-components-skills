@@ -3,7 +3,7 @@ name: syncfusion-flutter-pyramid-charts
 description: Implements Syncfusion Flutter Pyramid Charts (SfPyramidChart, PyramidSeries) for proportional and hierarchical data visualization. Use when working with pyramid charts, funnel-style visualizations, or segment-based data comparisons in Flutter. This skill covers series configuration, segment exploding, gap ratio, PyramidMode, data labels, legends, and tooltip customization.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Implementing Pyramid Charts (SfPyramidChart)

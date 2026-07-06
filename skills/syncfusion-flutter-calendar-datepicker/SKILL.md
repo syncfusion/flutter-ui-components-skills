@@ -3,7 +3,7 @@ name: syncfusion-flutter-calendar-datepicker
 description: Implements Syncfusion Flutter Calendar (SfCalendar) and Date Range Picker (SfDateRangePicker) widgets for date and scheduling UIs in Flutter apps. Use when building appointment calendars, booking systems, date range selectors, or event scheduling interfaces. This skill covers calendar views, recurring events, date navigation, localization, callbacks, and customization.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Syncfusion Flutter Calendar & Date Range Picker

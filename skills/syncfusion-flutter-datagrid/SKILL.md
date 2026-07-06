@@ -3,7 +3,7 @@ name: syncfusion-flutter-datagrid
 description: Implements Syncfusion Flutter DataGrid (SfDataGrid) for displaying and manipulating tabular data in Flutter applications. Use when working with data grids, data tables, or column-based data presentation using the syncfusion_flutter_datagrid package. This skill covers DataGridSource, GridColumn configuration, sorting, filtering, paging, editing, and selection.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Implementing Syncfusion Flutter DataGrid

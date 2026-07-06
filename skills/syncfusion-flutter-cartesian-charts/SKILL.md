@@ -3,7 +3,7 @@ name: syncfusion-flutter-cartesian-charts
 description: Implements Syncfusion Flutter Cartesian Charts (SfCartesianChart) for a wide range of 2D chart types in Flutter apps. Use when working with line, column, bar, area, spline, scatter, bubble, financial, stacked, or histogram charts. This skill covers axis types (NumericAxis, CategoryAxis, DateTimeAxis), zoom and pan, tooltip, trackball, legend, annotations, technical indicators, trendlines, and chart export.
 metadata:
   author: "Syncfusion Inc"
-  version: "33.1.44"
+  version: "34.1.29"
 ---
 
 # Implementing Syncfusion Flutter Cartesian Charts
